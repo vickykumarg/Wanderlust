@@ -108,7 +108,9 @@ passport.deserializeUser(User.deserializeUser());
 //     res.send("Successfully Testing");
 // })
 
-
+app.get("/",(req,res)=>{
+    res.redirect("/listings");
+})
 
 app.use((req,res,next)=>{
     res.locals.success=req.flash("success");

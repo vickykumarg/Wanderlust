@@ -1,0 +1,131 @@
+<style>
+  .search-btn{
+    width: 10rem;
+    background-color:#fe424d;
+    color:#fff;
+    border-radius: 25px;
+    padding:0 1rem 0 1rem;
+  }
+
+  @media(max-width:780px){
+    .search-btn{
+    background-color:#fe424d;
+    color:#fff;
+    border-radius: 25px;
+    padding:0 1rem 0 1rem;
+    }
+  }
+
+  .search-btn:hover{
+    background-color: #fe424d;
+    color:#fff;
+  }
+
+  .search-btn i{
+    display: inline;
+    margin-right: 0.5rem;
+  }
+
+  .search-inp{
+    border-radius: 25px;
+    padding:0.5rem,3rem,0.5rem,3rem;
+    font-size: 1rem;
+    
+  }
+
+
+  
+  .dropdown-menu {
+    width: 100%; 
+  } 
+
+  .dropdown-item {
+    padding:10px 15px;
+  } 
+
+  .tax-toogle{
+    position: relative;
+    border:1px solid black;
+    border-radius: 1rem;
+    height: 3rem;
+    padding:1rem;
+    margin-left: 2rem;
+    display: flex;
+    align-items: center;
+    width:80%;
+    right:20px;
+
+  }
+  
+</style>
+
+<nav class="navbar navbar-expand-lg bg-body-light border-bottom sticky-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/listings"><i class="fa-regular fa-compass"></i></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link" href="/listings"><b>Explore</b></a>
+      </div>
+
+      <!-- Dropdown Menu for Mobile -->
+      <div class="navbar-nav ms-auto d-lg-none"> 
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+            Menu
+          </button>
+          <ul class="dropdown-menu">
+            <li>
+              <form class="d-flex p-2" role="search">
+                <input class="form-control search-inp" type="search" placeholder="Search destination">
+                <button class="btn search-btn" type="submit">
+                  <i class="fa-solid fa-magnifying-glass"></i>Search
+                </button>
+              </form>
+            </li>
+            <li><a class="dropdown-item" href="/listings/new"><b>Airbnb your home</b></a></li>
+            <% if (!currUser) { %>
+              
+
+              <li><a class=" nav-link dropdown-item" href="/signup"><b>Sign up</b></a></li>
+              <li><a class="dropdown-item" href="/login"><b>Login</b></a></li>
+            <% } %>
+            <% if (currUser) { %>
+              <li><a class="dropdown-item" href="/logout"><b>Logout</b></a></li>
+            <% } %>
+            <div class="tax-toogle">
+              <div class="form-check-reverse form-switch">
+                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                <label class="form-check-label" for="flexSwitchCheckDefault">Display after total taxes</label>
+              </div>
+            </div>
+          </ul>
+          
+          
+        </div>
+      </div>
+
+      <!-- Normal Navbar for Larger Screens -->
+      <div class="navbar-nav ms-auto d-none d-lg-flex">
+        <form class="d-flex me-3" role="search">
+          <input class="form-control me-2 search-inp" type="search" placeholder="Search destination">
+          <button class="btn search-btn" type="submit">
+            <i class="fa-solid fa-magnifying-glass"></i> Search
+          </button>
+        </form>
+        <a class="nav-link" href="/listings/new"><b>Airbnb your home</b></a>
+        <% if (!currUser) { %>
+          <a class="nav-link" href="/signup"><b>Sign up</b></a>
+          <a class="nav-link" href="/login"><b>Login</b></a>
+        <% } %>
+        <% if (currUser) { %>
+          <a class="nav-link" href="/logout"><b>Logout</b></a>
+        <% } %>
+      </div>
+
+    </div>
+  </div>
+</nav>
